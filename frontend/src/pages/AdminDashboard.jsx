@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import apiClient from '../api/apiClient';
 import { Award, CheckCircle, FileCheck, Loader, AlertCircle, TrendingUp, RefreshCw } from 'lucide-react';
-
+import Footer from '../components/Footer';
 
 export default function AdminDashboard() {
 
@@ -91,15 +91,14 @@ export default function AdminDashboard() {
     );
   }
 
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
 
         {/* Header */}
         <div className="mb-8 sm:mb-12 flex items-start sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-light text-gray-900 mb-1 sm:mb-3">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-normal text-gray-900 mb-1 sm:mb-3">
               Admin Dashboard
             </h1>
             <p className="text-gray-600 font-light text-sm sm:text-base mt-1 sm:mt-2">
@@ -119,25 +118,21 @@ export default function AdminDashboard() {
           <StatCard
             label="Total Activities"
             value={stats.total}
-            icon={<FileCheck className="w-6 h-6" />}
             color="from-blue-500 to-blue-600"
           />
           <StatCard
             label="Pending"
             value={stats.pending}
-            icon={<AlertCircle className="w-6 h-6" />}
             color="from-yellow-500 to-yellow-600"
           />
           <StatCard
             label="Certified"
             value={stats.certified}
-            icon={<CheckCircle className="w-6 h-6" />}
             color="from-green-500 to-green-600"
           />
           <StatCard
             label="Rate"
             value={`${stats.rate}%`}
-            icon={<TrendingUp className="w-6 h-6" />}
             color="from-purple-500 to-purple-600"
           />
         </div>
@@ -319,7 +314,9 @@ export default function AdminDashboard() {
         </div>
 
       </div>
+      <Footer />
     </div>
+
   );
 }
 

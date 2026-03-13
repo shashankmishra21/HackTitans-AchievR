@@ -56,7 +56,7 @@ export default function Navbar({ user, setUser }) {
             </button>
 
             {/* Role Buttons */}
-            {user?.role === "student" && (
+            {/* {user?.role === "student" && (
               <button
                 onClick={() => navigate("/submit")}
                 className="flex items-center gap-2 px-3 lg:px-4 py-2 text-sm rounded-md bg-orange-600 text-white hover:bg-orange-700 transition whitespace-nowrap"  >
@@ -85,12 +85,12 @@ export default function Navbar({ user, setUser }) {
                 <span className="hidden lg:inline">Approvals</span>
                 <span className="lg:hidden">Admin</span>
               </button>
-            )}
+            )} */}
 
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-3 lg:px-4 py-2 text-sm rounded-md border border-gray-300 hover:bg-red-50 hover:text-red-600 transition whitespace-nowrap"  >
+              className="flex items-center gap-2 px-3 lg:px-4 py-2 text-sm rounded-md bg-orange-600 text-white hover:bg-orange-700 transition whitespace-nowrap"  >
               <LogOut size={16} />
               <span className="hidden lg:inline">Logout</span>
               <span className="lg:hidden">Exit</span>

@@ -93,8 +93,8 @@ export default function SkillSelector({ selectedSkills, setSelectedSkills }) {
 
   const renderSkillCategory = (skillType, title, icon, color, bgColor, borderColor) => {
     const isExpanded = expandedCategories[skillType];
-    const displaySkills = isExpanded 
-      ? SKILLS_CATALOG[skillType] 
+    const displaySkills = isExpanded
+      ? SKILLS_CATALOG[skillType]
       : SKILLS_CATALOG[skillType].slice(0, 6);
 
     return (
@@ -116,11 +116,10 @@ export default function SkillSelector({ selectedSkills, setSelectedSkills }) {
             {displaySkills.map(skill => (
               <label
                 key={skill}
-                className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition duration-300 ${
-                  selectedSkills[skillType].includes(skill)
-                    ? `${borderColor} ${bgColor}`
-                    : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
-                }`}
+                className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition duration-300 ${selectedSkills[skillType].includes(skill)
+                  ? `${borderColor} ${bgColor}`
+                  : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
+                  }`}
               >
                 <input
                   type="checkbox"
@@ -147,7 +146,7 @@ export default function SkillSelector({ selectedSkills, setSelectedSkills }) {
         {/* Custom Skill Input */}
         <div className="border-t-2 border-gray-100 pt-4">
           <label className="block text-sm font-semibold text-gray-900 mb-3">
-             Add Custom {title}
+            Add Custom {title}
           </label>
           <div className="flex gap-2">
             <input
@@ -295,7 +294,7 @@ export default function SkillSelector({ selectedSkills, setSelectedSkills }) {
       {selectedSkills.technicalSkills.length === 0 && selectedSkills.softSkills.length === 0 && selectedSkills.tools.length === 0 && (
         <div className="p-6 bg-blue-50 border-2 border-blue-200 rounded-2xl text-center">
           <p className="text-sm text-blue-700 font-light">
-            📝 Select skills from the list above or add your own custom skills to showcase your abilities
+            Select skills from the list above or add your own custom skills to showcase your abilities
           </p>
         </div>
       )}

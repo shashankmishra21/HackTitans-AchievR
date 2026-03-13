@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import AchievementDashboard from "../components/Student/AchievementDashboard";
 import PortfolioPreview from "../components/Student/PortfolioPreview";
+import Footer from "../components/Footer";
 
 export default function StudentDashboard({ user }) {
   const [activities, setActivities] = useState([]);
@@ -195,7 +196,7 @@ export default function StudentDashboard({ user }) {
             </p>
 
             {/* Responsive Heading */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 tracking-tight leading-tight">
               Your Achievement Dashboard
             </h1>
 
@@ -240,6 +241,8 @@ export default function StudentDashboard({ user }) {
           navigate={navigate}
         />
       </div>
+
+      <Footer/>
 
       {/* PORTFOLIO MODAL */}
       <PortfolioPreview
