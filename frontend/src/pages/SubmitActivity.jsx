@@ -79,7 +79,7 @@ export default function SubmitActivity() {
     }
 
     try {
-      const response = await apiClient.post('/activities/submit',formDataObj,
+      const response = await apiClient.post('/activities/submit', formDataObj,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -103,93 +103,108 @@ export default function SubmitActivity() {
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/20 to-white">
       {/* Header Section */}
       <div className="border-b border-gray-100 bg-gradient-to-b from-white to-orange-50/30 sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-8 py-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-3 rounded-xl shadow-lg">
-              <GraduationCap size={28} className="text-white" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 py-4 sm:py-6">
+          <div className="flex items-center gap-3 mb-2 sm:mb-4">
+            <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-2 sm:p-3 rounded-xl shadow-lg flex-shrink-0">
+              <GraduationCap size={22} className="text-white sm:hidden" />
+              <GraduationCap size={28} className="text-white hidden sm:block" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-gray-900">Submit Achievement</h1>
-              <p className="text-gray-600 font-medium mt-1">Document your accomplishments and verify them instantly</p>
+              <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">Submit Achievement</h1>
+              <p className="text-gray-600 font-medium mt-0.5 sm:mt-1 text-sm sm:text-base">
+                Document your accomplishments and verify them instantly
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-8 py-12">
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-6 sm:py-12">
         {/* Success Alert */}
         {success && (
-          <div className="mb-8 bg-green-50 border-2 border-green-300 rounded-xl p-6 flex items-start gap-4 animate-fadeInUp">
-            <CheckCircle2 size={28} className="text-green-600 flex-shrink-0 mt-1" />
+          <div className="mb-6 sm:mb-8 bg-green-50 border-2 border-green-300 rounded-xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 animate-fadeInUp">
+            <CheckCircle2 size={24} className="text-green-600 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="font-bold text-green-900 text-lg">Activity Submitted Successfully!</h3>
-              <p className="text-green-700 font-medium mt-1">Redirecting to dashboard...</p>
+              <h3 className="font-bold text-green-900 text-base sm:text-lg">Activity Submitted Successfully!</h3>
+              <p className="text-green-700 font-medium mt-1 text-sm sm:text-base">Redirecting to dashboard...</p>
             </div>
           </div>
         )}
 
         {/* Error Alert */}
         {error && (
-          <div className="mb-8 bg-red-50 border-2 border-red-300 rounded-xl p-6 flex items-start gap-4 animate-fadeInUp">
-            <AlertCircle size={28} className="text-red-600 flex-shrink-0 mt-1" />
+          <div className="mb-6 sm:mb-8 bg-red-50 border-2 border-red-300 rounded-xl p-4 sm:p-6 flex items-start gap-3 sm:gap-4 animate-fadeInUp">
+            <AlertCircle size={24} className="text-red-600 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="font-bold text-red-900 text-lg">Submission Error</h3>
-              <p className="text-red-700 font-medium mt-1">{error}</p>
+              <h3 className="font-bold text-red-900 text-base sm:text-lg">Submission Error</h3>
+              <p className="text-red-700 font-medium mt-1 text-sm sm:text-base">{error}</p>
             </div>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-8">
-          
+
+        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+
           {/* Activity Details Section */}
-          <div className="bg-white p-8 rounded-2xl border-2 border-gray-100 shadow-lg hover:shadow-xl transition duration-300">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-3 rounded-lg">
-                <FileText size={24} className="text-white" />
+          <div className="bg-white p-5 sm:p-8 rounded-2xl border-2 border-gray-100 shadow-lg hover:shadow-xl transition duration-300">
+            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+              <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                <FileText size={20} className="text-white sm:hidden" />
+                <FileText size={24} className="text-white hidden sm:block" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Activity Details</h2>
-                <p className="text-gray-600 font-medium text-sm mt-1">Share the details of your achievement</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Activity Details</h2>
+                <p className="text-gray-600 font-medium text-xs sm:text-sm mt-0.5 sm:mt-1">
+                  Share the details of your achievement
+                </p>
               </div>
             </div>
 
-            <div className="space-y-6">
+
+            <div className="space-y-5 sm:space-y-6">
               {/* Title */}
               <div>
-                <label className="block text-gray-900 font-bold mb-3">Achievement Title *</label>
+                <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                  Achievement Title *
+                </label>
                 <input
                   type="text"
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
                   placeholder="e.g., Won State Level Hackathon"
-                  className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 font-medium transition"
+                  className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 font-medium transition text-sm sm:text-base"
                   required
                 />
               </div>
 
               {/* Description */}
               <div>
-                <label className="block text-gray-900 font-bold mb-3">Detailed Description *</label>
+                <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                  Detailed Description *
+                </label>
                 <textarea
                   name="description"
                   value={formData.description}
                   onChange={handleChange}
                   placeholder="Describe your achievement in detail including your role, impact, and outcomes..."
-                  className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 font-medium h-40 resize-none transition"
+                  className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 font-medium h-36 sm:h-40 resize-none transition text-sm sm:text-base"
                   required
                 />
               </div>
 
               {/* Category and Date Grid */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-gray-900 font-bold mb-3">Category *</label>
+                  <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                    Category *
+                  </label>
                   <select
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white cursor-pointer transition"
+                    className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white cursor-pointer transition text-sm sm:text-base"
                   >
                     <option>Technical</option>
                     <option>Sports</option>
@@ -202,39 +217,45 @@ export default function SubmitActivity() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-900 font-bold mb-3">Event Date *</label>
+                  <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                    Event Date *
+                  </label>
                   <input
                     type="date"
                     name="eventDate"
                     value={formData.eventDate}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white transition"
+                    className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white transition text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
 
               {/* Organizing Body and Achievement Level Grid */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-gray-900 font-bold mb-3">Organizing Body</label>
+                  <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                    Organizing Body
+                  </label>
                   <input
                     type="text"
                     name="organizingBody"
                     value={formData.organizingBody}
                     onChange={handleChange}
                     placeholder="e.g., Government of India, IEEE"
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium transition"
+                    className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium transition text-sm sm:text-base"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-900 font-bold mb-3">Achievement Level</label>
+                  <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                    Achievement Level
+                  </label>
                   <select
                     name="achievementLevel"
                     value={formData.achievementLevel}
                     onChange={handleChange}
-                    className="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white cursor-pointer transition"
+                    className="w-full px-4 sm:px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium bg-white cursor-pointer transition text-sm sm:text-base"
                   >
                     <option>College</option>
                     <option>University</option>
@@ -245,15 +266,18 @@ export default function SubmitActivity() {
                 </div>
               </div>
 
+
               {/* File Upload */}
               <div>
-                <label className="block text-gray-900 font-bold mb-3">Proof Document (Optional)</label>
+                <label className="block text-gray-900 font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                  Proof Document (Optional)
+                </label>
                 <div
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
                   onDragOver={handleDrag}
                   onDrop={handleDrop}
-                  className={`border-2 border-dashed rounded-2xl p-8 text-center transition duration-300 cursor-pointer group ${
+                  className={`border-2 border-dashed rounded-2xl p-6 sm:p-8 text-center transition duration-300 cursor-pointer group ${
                     dragActive
                       ? 'border-orange-500 bg-orange-50'
                       : 'border-gray-300 bg-gray-50 hover:border-orange-400 hover:bg-orange-50/50'
@@ -269,17 +293,22 @@ export default function SubmitActivity() {
                   <label htmlFor="file-input" className="cursor-pointer block">
                     {file ? (
                       <div className="flex items-center justify-center gap-3">
-                        <CheckCircle2 size={32} className="text-green-600" />
-                        <div className="text-left">
-                          <p className="text-green-700 font-bold text-lg">{file.name}</p>
+                        <CheckCircle2 size={28} className="text-green-600 flex-shrink-0" />
+                        <div className="text-left min-w-0">
+                          <p className="text-green-700 font-bold text-base sm:text-lg truncate">{file.name}</p>
                           <p className="text-sm text-green-600 font-medium">Click to change file</p>
                         </div>
                       </div>
                     ) : (
                       <div>
-                        <Upload size={40} className="mx-auto text-orange-500 mb-3 group-hover:scale-110 transition" />
-                        <p className="text-gray-900 font-bold text-lg">Click to upload or drag & drop</p>
-                        <p className="text-sm text-gray-600 font-medium mt-2">PDF, JPG, PNG (max 10MB)</p>
+                        <Upload size={36} className="mx-auto text-orange-500 mb-3 group-hover:scale-110 transition sm:hidden" />
+                        <Upload size={40} className="mx-auto text-orange-500 mb-3 group-hover:scale-110 transition hidden sm:block" />
+                        <p className="text-gray-900 font-bold text-base sm:text-lg">
+                          Click to upload or drag & drop
+                        </p>
+                        <p className="text-xs sm:text-sm text-gray-600 font-medium mt-2">
+                          PDF, JPG, PNG (max 10MB)
+                        </p>
                       </div>
                     )}
                   </label>
@@ -289,19 +318,23 @@ export default function SubmitActivity() {
           </div>
 
           {/* Skills Selection Section */}
-          <div className="bg-white p-8 rounded-2xl border-2 border-gray-100 shadow-lg hover:shadow-xl transition duration-300">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-3 rounded-lg">
-                <Loader size={24} className="text-white" />
+          <div className="bg-white p-5 sm:p-8 rounded-2xl border-2 border-gray-100 shadow-lg hover:shadow-xl transition duration-300">
+            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+              <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                <Loader size={20} className="text-white sm:hidden" />
+                <Loader size={24} className="text-white hidden sm:block" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Select Your Skills</h2>
-                <p className="text-gray-600 font-medium text-sm mt-1">Choose all skills that apply to this achievement</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Select Your Skills</h2>
+                <p className="text-gray-600 font-medium text-xs sm:text-sm mt-0.5 sm:mt-1">
+                  Choose all skills that apply to this achievement
+                </p>
               </div>
             </div>
 
-            <div className="bg-orange-50/50 border-2 border-orange-200 rounded-xl p-6 mb-6">
-              <p className="text-orange-900 font-semibold text-sm">
+
+            <div className="bg-orange-50/50 border-2 border-orange-200 rounded-xl p-4 sm:p-6 mb-6">
+              <p className="text-orange-900 font-semibold text-xs sm:text-sm">
                 ✨ Selecting relevant skills helps institutions evaluate your qualifications and verify achievements more accurately.
               </p>
             </div>
@@ -310,11 +343,11 @@ export default function SubmitActivity() {
           </div>
 
           {/* Submit Button */}
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 disabled:from-gray-400 disabled:to-gray-400 text-white py-4 rounded-xl font-bold text-lg transition duration-300 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 disabled:shadow-none flex items-center justify-center gap-3 group"
+              className="flex-1 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 disabled:from-gray-400 disabled:to-gray-400 text-white py-4 rounded-xl font-bold text-base sm:text-lg transition duration-300 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 disabled:shadow-none flex items-center justify-center gap-3 group"
             >
               {loading ? (
                 <>
@@ -330,11 +363,11 @@ export default function SubmitActivity() {
                 </>
               )}
             </button>
-            
+
             <button
               type="button"
               onClick={() => window.history.back()}
-              className="px-8 py-4 border-2 border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 font-bold rounded-xl transition duration-300"
+              className="w-full sm:w-auto px-8 py-4 border-2 border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 font-bold rounded-xl transition duration-300 text-base"
             >
               Cancel
             </button>
