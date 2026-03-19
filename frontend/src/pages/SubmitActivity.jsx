@@ -58,51 +58,51 @@ export default function SubmitActivity() {
     e.preventDefault();
     setError('');
 
-    if (selectedSkills.technicalSkills.length === 0 &&
+    if (
+      selectedSkills.technicalSkills.length === 0 &&
       selectedSkills.softSkills.length === 0 &&
-      selectedSkills.tools.length === 0) {
-      if (selectedSkills.technicalSkills.length === 0 &&
-        selectedSkills.softSkills.length === 0 &&
-        selectedSkills.tools.length === 0) {
-        setError('Please select at least one skill');
-        return;
-      }
+      selectedSkills.tools.length === 0
+    ) {
+      setError('Please select at least one skill');
+      return;
+    }
 
-      setLoading(true);
+    setLoading(true);
 
-      const formDataObj = new FormData();
-      Object.keys(formData).forEach(key => {
-        formDataObj.append(key, formData[key]);
+    const formDataObj = new FormData();
+    Object.keys(formData).forEach((key) => {
+      formDataObj.append(key, formData[key]);
+    });
+
+    formDataObj.append(
+      'selectedTechnicalSkills',
+      JSON.stringify(selectedSkills.technicalSkills)
+    );
+    formDataObj.append('selectedSoftSkills', JSON.stringify(selectedSkills.softSkills));
+    formDataObj.append('selectedTools', JSON.stringify(selectedSkills.tools));
+
+    if (file) {
+      formDataObj.append('document', file);
+    }
+
+    try {
+      const response = await apiClient.post('/activities/submit', formDataObj, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'multipart/form-data'
+        }
       });
 
-      formDataObj.append('selectedTechnicalSkills', JSON.stringify(selectedSkills.technicalSkills));
-      formDataObj.append('selectedSoftSkills', JSON.stringify(selectedSkills.softSkills));
-      formDataObj.append('selectedTools', JSON.stringify(selectedSkills.tools));
-
-      if (file) {
-        formDataObj.append('document', file);
-      }
-
-      try {
-        const response = await apiClient.post('/activities/submit', formDataObj,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-              'Content-Type': 'multipart/form-data'
-            }
-          }
-        );
-
-        setSuccess(true);
-        setTimeout(() => {
-          window.location.href = '/dashboard';
-        }, 2000);
-      } catch (err) {
-        setError(err.response?.data?.error || 'Error submitting activity');
-      } finally {
-        setLoading(false);
-      }
-    };
+      setSuccess(true);
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 2000);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error submitting activity');
+    } finally {
+      setLoading(false);
+    }
+  };
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/20 to-white">
@@ -409,4 +409,3 @@ export default function SubmitActivity() {
       </div>
     );
   }
-}
