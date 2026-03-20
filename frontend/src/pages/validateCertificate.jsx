@@ -21,7 +21,7 @@ export default function VerifyCertificate() {
       setVerification(null);
       const response = await fetch(`${BACKEND_URL}/api/certificates/verify/${id}`);
       const backendData = await response.json();
-      setVerification({ status: backendData.status, data: backendData, message: backendData.message });
+      setVerification(backendData);
     } catch {
       setVerification({ status: 'error', message: 'Service unavailable. Please try again.' });
     } finally {

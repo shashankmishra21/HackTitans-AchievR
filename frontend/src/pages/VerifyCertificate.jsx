@@ -19,10 +19,17 @@ export default function VerifyCertificate() {
     try {
       setLoading(true);
       const response = await fetch(`${BACKEND_URL}/api/certificates/verify/${id}`);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || `HTTP ${response.status}`);
+      }
+
       const backendData = await response.json();
-      setVerification({ status: backendData.status, data: backendData });
-    } catch {
-      setVerification({ status: 'error', message: 'Service unavailable' });
+      setVerification(backendData);
+    } catch (err) {
+      console.error('VerifyCertificate error:', err);
+      setVerification({ status: 'error', message: err.message || 'Service unavailable' });
     } finally {
       setLoading(false);
     }
