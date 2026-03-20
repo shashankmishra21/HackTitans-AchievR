@@ -191,7 +191,7 @@ exports.verifyCertificate = async (req, res) => {
         $inc: { verificationCount: 1 },
         $set: { lastVerifiedAt: now }
       }
-    );
+    ).exec();
 
     res.json({
       status: 'valid',

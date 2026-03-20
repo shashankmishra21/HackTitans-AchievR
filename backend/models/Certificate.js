@@ -34,6 +34,14 @@ const certificateSchema = new mongoose.Schema({
     default: 'College'
   },
 
+  verificationCount: {
+    type: Number,
+    default: 0
+  },
+  lastVerifiedAt: {
+    type: Date
+  },
+
   eventDate: Date,
 
   pdfUrl: String,
