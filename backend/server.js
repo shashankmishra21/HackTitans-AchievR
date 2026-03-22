@@ -10,6 +10,7 @@ const app = express();
 
 app.use(cors({
   origin: [
+    'https://dnvba07nlq4dm.cloudfront.net',
     'http://achievr-frontend-shashank-0121.s3-website.eu-north-1.amazonaws.com',
     'http://localhost:5173',
     'http://localhost:5174'
